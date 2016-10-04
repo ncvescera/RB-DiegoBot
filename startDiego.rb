@@ -2,4 +2,5 @@
 
 require 'daemons'
 require 'rubygems'
-Daemons.run('dieog.rb')
+
+Daemons.run('diego.rb')
