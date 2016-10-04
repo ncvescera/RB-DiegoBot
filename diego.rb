@@ -2,11 +2,15 @@
 # encoding: utf-8
 
 require 'telegram/bot'
-#require_relative 'settings/token'
+require 'daemons'
 
-token = "266306542:AAEPi-o5Kh91-abpVdKuRGJI8UqMFtJNFkg"
+config_file = './settings/token.rb'
+require config_file if File.file? config_file
+TOKEN ||= '.'
 
-Telegram::Bot::Client.run(token) do |bot|
+#Daemons.daemonize # così funziona ma è un po brutto :/
+
+Telegram::Bot::Client.run(TOKEN) do |bot|
 	bot.listen do |message|
 		#Saluto iniziale quando viene avviato per la prima volta
 		if message.text.to_s.include?("/start")
@@ -14,7 +18,7 @@ Telegram::Bot::Client.run(token) do |bot|
 		end
 		#Saluto con ciao,hey,bella,wue
 		if message.text.to_s.downcase.include?("ciao") || message.text.to_s.downcase.include?("bella") || message.text.to_s.downcase.include?("wue") || message.text.to_s.downcase.include?("hey") || message.text.to_s.downcase.include?("hola") || message.text.to_s.downcase.include?("salve")
-			case Random.rand(0...2)
+			case Random.rand(0...3) #parte dal primo numero fino al secondo - 1
 				when 0
 					 bot.api.send_message(chat_id: message.chat.id, text: 'Ciao lezzo !!')
 				when 1
