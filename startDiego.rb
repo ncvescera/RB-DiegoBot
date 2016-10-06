@@ -5,14 +5,13 @@ require 'rubygems'
 
 current_dir = Dir.pwd
 
+#comando per gestire il demone
+cmd = ARGV[0]
 
+#oggetto che contiene gli argomenti da passare allo script demone
 options = {
-  :backtrace => true,
-  :app_name => "test",
-  :log_dir => "#{current_dir}/log",
-  :log_output => true,
-  :dir_mode => :normal,
-  :monitor => true
-}
+    :ARGV       => ["#{cmd}", '-f', '--', "#{current_dir}/"],
+  }
 
-Daemons.run('diego.rb')
+#demonizzazione dello scirpt
+Daemons.run("diego.rb", options)
