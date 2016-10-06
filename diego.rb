@@ -35,9 +35,9 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
 		if message.text.to_s.downcase.include?("gratuito") || message.text.to_s.downcase.include?("gratuìto")
 			case Random.rand(0...11)
 				when 0..9
-					bot.api.send_message(chat_id: message.chat.id, text: "Beh ovvio gratìto .. Ah no gratuì.. gra.. gratuìt... gratuìtoh... No basta mi arrendo")
+					bot.api.send_message(chat_id: message.chat.id, text: "Gratuìto. GRA TU ì TO ! CAZZO !")
 				when 10
-					bot.api.send_message(chat_id: message.chat.id, text: "Beh è gratuìto .. ah eh grat.. gratuito. SIIII SIIII GRATUITO !!!")
+					bot.api.send_message(chat_id: message.chat.id, text: "Gratuito ameba !")
 			end
 		end
 
