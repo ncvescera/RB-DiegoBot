@@ -57,6 +57,25 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
 		if message.text.to_s.downcase.include?("tumore")
 			bot.api.send_voice(chat_id: message.chat.id, voice: Faraday::UploadIO.new(absolute_path+'media/audio2.mp3', 'audio/mp3'))
 		end
+
+		#tumora persona
+		if message.text.to_s.downcase.include?("tumora")
+			boy = message.text.to_s.split(" ")[1]
+			if boy.to_s == ''
+				bot.api.send_message(chat_id: message.chat.id, text: "#{message.from.first_name} sei un coglione ! Come faccio a mandare un tumore a nessuno !?!?!")
+			else
+				case Random.rand(0...3)
+				when 0
+					bot.api.send_message(chat_id: message.chat.id, text: "#{boy} spero che ti prenda un bel tumore, un bel tumore !")
+				when 1
+					bot.api.send_message(chat_id: message.chat.id, text: "#{boy} spero che ti prenda un bel tumore, ma di quelli grossi eh !")
+				when 2
+					bot.api.send_message(chat_id: message.chat.id, text: "Ora #{boy} ti mando un bel tumore, un bel tumore !")
+				end
+			end
+		end
+					
+
 				
 
 	end
