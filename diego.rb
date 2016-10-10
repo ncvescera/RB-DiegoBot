@@ -41,5 +41,23 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
 			end
 		end
 
+		#palesati
+		if message.text.to_s.downcase.include?("palesati") && message.text.to_s.downcase.include?("diego")
+			case Random.rand(0...3)
+			when 0
+				bot.api.send_photo(chat_id: message.chat.id, photo: Faraday::UploadIO.new(absolute_path+'media/diego1.jpg', 'image/jpg'))
+			when 1
+				bot.api.send_photo(chat_id: message.chat.id, photo: Faraday::UploadIO.new(absolute_path+'media/diego2.jpg', 'image/jpg'))
+			when 2
+				bot.api.send_photo(chat_id: message.chat.id, photo: Faraday::UploadIO.new(absolute_path+'media/diego3.jpg', 'image/jpg'))
+			end
+		end
+		
+		#un tumore
+		if message.text.to_s.downcase.include?("tumore")
+			bot.api.send_voice(chat_id: message.chat.id, voice: Faraday::UploadIO.new(absolute_path+'media/audio2.mp3', 'audio/mp3'))
+		end
+				
+
 	end
 end
