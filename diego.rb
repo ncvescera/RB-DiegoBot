@@ -60,7 +60,11 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
 
 		#tumora persona
 		if message.text.to_s.downcase.include?("tumora")
-			boy = message.text.to_s.split(" ")[1]
+			i_tumora = message.text.to_s.index('tumora')
+			print i_tumora
+			boy = message.text.to_s[i_tumora+7,message.text.to_s.length-1]
+			print boy
+			#boy = message.text.to_s.split(" ")[1]
 			if boy.to_s == ''
 				bot.api.send_message(chat_id: message.chat.id, text: "#{message.from.first_name} sei un coglione ! Come faccio a mandare un tumore a nessuno !?!?!")
 			else
