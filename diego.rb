@@ -60,13 +60,19 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
 
 		#tumora persona
 		if message.text.to_s.downcase.include?("tumora")
-			i_tumora = message.text.to_s.index('tumora')
-			print i_tumora
-			boy = message.text.to_s[i_tumora+7,message.text.to_s.length-1]
-			print boy
-			#boy = message.text.to_s.split(" ")[1]
+			i_tumora = message.text.to_s.downcase.index('tumora')+7
+			boy = message.text.to_s[i_tumora,message.text.to_s.length-1]
+			#boy = message.text.to_s[(i_tumora + 7),message.text.to_s.length-1]
+			
 			if boy.to_s == ''
 				bot.api.send_message(chat_id: message.chat.id, text: "#{message.from.first_name} sei un coglione ! Come faccio a mandare un tumore a nessuno !?!?!")
+			elsif boy.to_s.downcase == 'diego'
+				case Random.rand(0...2)
+				when 0
+					bot.api.send_message(chat_id: message.chat.id, text: "#{message.from.first_name} sei simpatico quanto un edema polmonare !!")
+				when 1
+					bot.api.send_message(chat_id: message.chat.id, text: "Stai zitto, CANCER !!")
+				end
 			else
 				case Random.rand(0...3)
 				when 0
@@ -79,8 +85,20 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
 			end
 		end
 					
+		#hobbes
+		if message.text.to_s.downcase.include?("hobbes")
+			bot.api.send_message(chat_id: message.chat.id, text: "Il caro Thomas Hobbes dice che l'uomo è lupo all'altro uomo")
+		end		
+		
+		#grillo
+		if message.text.to_s.downcase.include?("grillo") || message.text.to_s.downcase.include?("beppe") || message.text.to_s.downcase.include?("grillino") || message.text.to_s.downcase.include?("grillini") || message.text.to_s.downcase.include?("movimento 5 stelle") || message.text.to_s.downcase.include?("movimento cinque stelle") || message.text.to_s.downcase.include?("m5s")
+			bot.api.send_message(chat_id: message.chat.id, text: "Ah si? Credi anche nelle scie chimiche?") 
+		end
 
-				
+		#machiavelli
+		if message.text.to_s.downcase.include?("machiavelli")
+			bot.api.send_message(chat_id: message.chat.id, text: "il fine giustifica i mezzi")
+		end
 
 	end
 end
