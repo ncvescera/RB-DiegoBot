@@ -99,6 +99,21 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
 		if message.text.to_s.downcase.include?("machiavelli")
 			bot.api.send_message(chat_id: message.chat.id, text: "il fine giustifica i mezzi")
 		end
+	
+		#renzi
+		if message.text.to_s.downcase.include?("renzi")
+			bot.api.send_message(chat_id: message.chat.id, text: "Secondo Machiavelli, il GRANDE Machiavelli, Il principe faccia quel che occorre per vincere e conservare il potere. I mezzi saranno sempre giudicati onorevoli e lodati da ognuno, perché il volgo bada sempre alle apparenze e al risultato. E nel mondo il popolo è da per tutto. Le minoranze non contano, quando le maggioranze hanno dove appoggiarsi")
+		end
+
+		#trump
+		if message.text.to_s.downcase.include?("trump")
+			case Random.rand(0...2)
+			when 0
+				bot.api.send_message(chat_id: message.chat.id, text: "A me Trump non è che sta antipatico. A me Trump, fa PAURA. Comprendi? Il principe di Machiavelli è una persona CAPACE. E' una persona che sì, fa cattive azioni, ma per il bene del paese. Trump, innanzitutto non si sa cosa vuole fare. PUNTO. Cioè è proprio generico. Io spero che vinca ma sai perché? So proprio curioso, la curiosità è troppa, capito? A me le cose apocalittiche piacciono e Trump mi sa proprio degrado, ma proprio fine del mondo, apocallise capito? Aspetto solo i quattro cavalieri descritti dalla Bibbia")
+			when 1
+				bot.api.send_message(chat_id: message.chat.id, text: "Trump rispecchia la parte peggiore dell'America, quella segregazionista, fascista, razzista, maschilista... Veramente.  E' tornare 50 anni indietro proprio, comprendi?")
+			end	
+		end
 
 	end
 end
